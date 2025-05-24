@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    {
+      "name": "test-plugin",
+      "version": "1.0.0",
+      "url": "file://C:/Users/USER/OneDrive/Desktop/headp/headlamp-55-Kallal/test-checksum/test-plugin-1.0.0.tgz",
+      "checksum": "invalid-checksum-0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+    }
+  ]
+}

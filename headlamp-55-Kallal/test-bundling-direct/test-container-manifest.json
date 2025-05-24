@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    {
+      "name": "test-plugin",
+      "version": "1.0.0",
+      "url": "C:/Users/USER/OneDrive/Desktop/headp/headlamp-55-Kallal/test-bundling-direct/test-plugin-1.0.0.tgz",
+      "checksum": "1438e70fb5baaeb0a4d9fce90bf09068cc4128d90c02e933b2f638bdc30817b4"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    {
+      "name": "test-plugin",
+      "version": "1.0.0",
+      "url": "https://example.com/plugins/test-plugin-1.0.0.tgz",
+      "checksum": "invalid-checksum-0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+    }
+  ]
+}
