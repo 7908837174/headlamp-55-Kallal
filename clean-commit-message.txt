@@ -1,0 +1,18 @@
+Add checksum verification to plugin bundling scripts
+
+This commit adds SHA256 checksum verification to the plugin bundling scripts
+to ensure the integrity and security of downloaded plugins.
+
+The implementation:
+- Enhances app/scripts/setup-plugins.js to verify checksums when downloading plugins
+- Enhances container/fetch-plugins.sh to verify checksums when downloading plugins
+- Adds plugins/headlamp-plugin/scripts/generate-checksum.js utility for generating checksums
+- Adds manifest files with plugin checksums
+- Adds comprehensive tests for checksum verification
+- Adds documentation for the checksum verification system
+
+The implementation ensures that plugins downloaded during the build process
+or at runtime match their expected checksums, preventing security issues
+that could arise from corrupted or tampered plugin files.
+
+Fixes kubernetes-sigs/headlamp#2539

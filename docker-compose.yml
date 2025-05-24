@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  # Jaeger OTLP Fixer proxy
+  otlp-fixer:
+    image: node:16-alpine
+    volumes:
+      - ./jaeger-otlp-fixer.js:/app/jaeger-otlp-fixer.js
+    working_dir: /app
+    command: node jaeger-otlp-fixer.js
+    environment:
+      - JAEGER_HOST=jaeger
+      - JAEGER_PORT=16686
+    ports:
+      - "8080:8080"
+    depends_on:
+      - jaeger
+
+  # Jaeger all-in-one
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"  # UI
+      - "14250:14250"  # gRPC for collector
+      - "14268:14268"  # HTTP for collector
+      - "6831:6831/udp"  # Jaeger thrift compact
+      - "6832:6832/udp"  # Jaeger thrift binary
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411

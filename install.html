@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jaeger OTLP Auto-Fix Installation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .step {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #3498db;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jaeger OTLP Auto-Fix Installation</h1>
+    
+    <p>This tool automatically fixes the issue with negative values in unsigned integer fields in OTLP traces that cause errors when uploading to Jaeger.</p>
+    
+    <h2>The Issue</h2>
+    <p>When uploading OTLP traces to Jaeger, you might encounter this error:</p>
+    <code>Error converting traces to OTLP (�)</code>
+    
+    <p>This happens because:</p>
+    <ol>
+        <li>The OpenTelemetry Java SDK sometimes generates traces with negative values for fields like <code>droppedAttributesCount</code></li>
+        <li>According to the OTLP specification, these fields should be unsigned integers (uint32)</li>
+        <li>Jaeger's parser rejects these values with a cryptic error message</li>
+    </ol>
+    
+    <h2>Installation Options</h2>
+    
+    <div class="step">
+        <h3>Option 1: Browser Extension (Recommended)</h3>
+        <ol>
+            <li>Install the <a href="https://www.tampermonkey.net/" target="_blank">Tampermonkey</a> extension for your browser</li>
+            <li>Click the button below to install the auto-fix script:
+                <p><a class="button" href="jaeger-ui-fix.user.js" target="_blank">Install Auto-Fix Script</a></p>
+            </li>
+            <li>Tampermonkey will open a new tab showing the script. Click "Install" to confirm</li>
+            <li>The fix is now active whenever you use Jaeger UI</li>
+        </ol>
+    </div>
+    
+    <div class="step">
+        <h3>Option 2: Manual Script Injection</h3>
+        <ol>
+            <li>Open your Jaeger UI in the browser</li>
+            <li>Press F12 to open developer tools</li>
+            <li>Go to the Console tab</li>
+            <li>Copy and paste the contents of <code>auto-fix-otlp.js</code> into the console</li>
+            <li>Press Enter to run the script</li>
+            <li>The fix will be active for the current session</li>
+        </ol>
+    </div>
+    
+    <h2>Fields Fixed</h2>
+    <p>The script automatically fixes negative values in the following fields:</p>
+    <ul>
+        <li>droppedAttributesCount</li>
+        <li>droppedEventsCount</li>
+        <li>droppedLinksCount</li>
+        <li>droppedLabelsCount</li>
+    </ul>
+    
+    <h2>Related Issues</h2>
+    <ul>
+        <li><a href="https://github.com/jaegertracing/jaeger-ui/issues/2589" target="_blank">Error converting traces to OTLP (�) - Jaeger UI #2589</a></li>
+        <li><a href="https://github.com/open-telemetry/opentelemetry-java/issues/7135" target="_blank">droppedAttributesCount is sometimes negative, but the spec requires uint32 - OpenTelemetry Java #7135</a></li>
+    </ul>
+</body>
+</html>
