@@ -30,7 +30,7 @@ import { KubeContainerStatus } from '../../lib/k8s/cluster';
 import Pod from '../../lib/k8s/pod';
 import { DefaultHeaderAction } from '../../redux/actionButtonsSlice';
 import { EventStatus, HeadlampEventType, useEventCallback } from '../../redux/headlampEventSlice';
-import { ActionButton, LightTooltip, SectionBox, SimpleTable } from '../common';
+import ActionButton from '../common/ActionButton';
 import Link from '../common/Link';
 import { LogViewer, LogViewerProps } from '../common/LogViewer';
 import {
@@ -40,7 +40,10 @@ import {
   VolumeSection,
 } from '../common/Resource';
 import AuthVisible from '../common/Resource/AuthVisible';
+import SectionBox from '../common/SectionBox';
+import SimpleTable from '../common/SimpleTable';
 import Terminal from '../common/Terminal';
+import LightTooltip from '../common/Tooltip/TooltipLight';
 import { makePodStatusLabel } from './List';
 
 const PaddedFormControlLabel = styled(FormControlLabel)(({ theme }) => ({

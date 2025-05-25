@@ -28,7 +28,7 @@ import { useHistory } from 'react-router-dom';
 import { isElectron } from '../../helpers/isElectron';
 import { createRouteURL } from '../../lib/router';
 import { useTypedSelector } from '../../redux/reducers/reducers';
-import { ActionButton } from '../common';
+import ActionButton from '../common/ActionButton';
 import CreateButton from '../common/Resource/CreateButton';
 import NavigationTabs from './NavigationTabs';
 import SidebarItem, { SidebarItemProps } from './SidebarItem';
