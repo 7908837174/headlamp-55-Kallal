@@ -28,7 +28,7 @@
     "@mui/x-date-pickers": "^7.15.0",
     "@mui/x-tree-view": "^6.17.0",
     "@reduxjs/toolkit": "^2.2.7",
-    "@storybook/addon-actions": "^8.5.6",
+    "@storybook/addon-actions": "^8.6.12",
     "@storybook/addon-essentials": "^8.5.6",
     "@storybook/addon-interactions": "^8.5.6",
     "@storybook/addon-links": "^8.5.6",
